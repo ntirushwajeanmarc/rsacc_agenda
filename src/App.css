@@ -1,42 +1,280 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  background: #f5f5f5;
   padding: 2rem;
+}
+
+.document-section,
+.excel-section {
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  margin: 0 0 0.5rem 0;
+  color: #667eea;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 1rem;
+}
+
+.section-subtitle {
+  margin: 0 0 2rem 0;
+  color: #666;
+  font-size: 1.1rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.agenda-content {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.agenda-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.agenda-table th,
+.agenda-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border: 1px solid #e0e0e0;
+  vertical-align: top;
+  color: #333;
+}
+
+.agenda-table thead th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.agenda-table .day-header td {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 16px;
+  color: white;
+  border: none;
+}
+
+.agenda-table tbody tr {
+  background: white;
+  transition: all 0.3s ease;
+}
+
+/* Time column styling */
+.agenda-table tbody tr td:first-child {
+  background: #f0f4ff;
+  font-weight: 600;
+  color: #667eea;
+}
+
+/* Alternating row colors for better readability */
+.agenda-table tbody tr:nth-child(even):not(.day-header) {
+  background: #fafbff;
+}
+
+.agenda-table tbody tr:nth-child(odd):not(.day-header) {
+  background: #ffffff;
+}
+
+/* Hover effect */
+.agenda-table tbody tr:hover:not(.day-header) {
+  background: linear-gradient(90deg, #f0f4ff 0%, #fef3ff 100%);
+  transform: scale(1.01);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+}
+
+/* Special styling for break times */
+.agenda-table tbody tr td[colspan="3"] {
+  background: linear-gradient(90deg, #fff4e6 0%, #ffe4f0 100%);
+  font-weight: 500;
+  color: #764ba2;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Override for day headers */
+.agenda-table .day-header td {
+  text-align: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.download-section {
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 2px solid #f0f0f0;
+  margin-top: 1rem;
+}
+
+.download-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 1.2rem;
+  color: #667eea;
+}
+
+.sheet-container {
+  margin-bottom: 2rem;
+}
+
+.sheet-title {
+  margin: 0 0 1.5rem 0;
+  color: #667eea;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #667eea;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.excel-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.excel-table th,
+.excel-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border: 1px solid #e0e0e0;
+  color: #333;
+}
+
+.excel-table .header-row th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.excel-table tr:nth-child(even) {
+  background-color: #f8f9ff;
+}
+
+.excel-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.excel-table tr:hover {
+  background: linear-gradient(90deg, #f0f4ff 0%, #fef3ff 100%);
+  transform: scale(1.005);
+  transition: all 0.3s ease;
+}
+
+.excel-table td {
+  color: #333;
+}
+
+.excel-table td:empty::after {
+  content: '—';
+  color: #ccc;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    padding: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .document-section,
+  .excel-section {
+    padding: 1.5rem;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.5rem;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .content {
+    padding: 0.5rem;
+  }
 
-.read-the-docs {
-  color: #888;
+  .document-section,
+  .excel-section {
+    padding: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .agenda-table th,
+  .agenda-table td,
+  .excel-table th,
+  .excel-table td {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
 }
